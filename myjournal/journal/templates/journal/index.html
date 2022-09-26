@@ -1,0 +1,37 @@
+{% extends "journal/layout.html" %}
+
+{% block body %}
+
+    <h1>Journal</h1>
+    <form class="form-group" action={% url 'entry' %} method="POST">
+        {% csrf_token %}
+        <div class="form-group bg-transparent">
+            <label for="exampleFormControlTextarea" id="title">Title:</label>
+            <input name="title" placeholder="Type Title" class="input-group mb-3 tl bg-transparent" id="exampleFormControlTextarea"></input>
+
+            <label for="exampleFormControlTextarea1">New Entry:</label>
+            <textarea name="newPost" class="form-control en bg-transparent"placeholder="Type Entry" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Enter</button>
+        </form>
+    </form>
+    
+    <div>
+        {% for post in posts %}
+        <div class="journal">
+            <div class="card bg-transparent" style="width: 84rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.content}}</p>
+                    <h6 class="card-subtitle mb-2 text-muted ttt">{{post.time}}</h6>   
+                   {% comment %} <form action="{% url 'delete' id=id %}" >
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </form>  {% endcomment %}
+                    <a href="delete/{{ post.id }}">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

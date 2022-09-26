@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(204, 188, 188);
+}
+.ttt{
+    color: black;
+}
+#title{
+    color: blue;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.tl{
+    padding: 0%;
+    border: none;
+    color:blue
+}
+.en{
+    padding: 0%;
+    border: none;
+    color: blue;
+}
